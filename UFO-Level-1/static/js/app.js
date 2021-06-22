@@ -13,6 +13,6 @@ var tbody = d3.select("tbody");
 
 var 
 
-var dates = data.datetime.map(item => item);
+var dates = data.datetime.map(date => date);
 
-var cities = data.city.map()
+var cities = data.city.map(city => city);
