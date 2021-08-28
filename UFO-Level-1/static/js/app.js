@@ -16,8 +16,11 @@ function init() {
     createTable();
 };
 
+// Call init funciton for default look
+init();
+
 // * Using the UFO dataset provided in the form of an array of JavaScript objects, write code that appends a table to your web page and then adds new rows of data for each UFO sighting.
-function createTable(tableData, tbody) {
+function createTable() {
     data.forEach((alienReport) => {
         var row = tbody.append("tr");
         Object.entries(alienReport).forEach(([key, value]) => {
@@ -28,28 +31,33 @@ function createTable(tableData, tbody) {
 };
 // * Make sure you have a column for `date/time`, `city`, `state`, `country`, `shape`, and `comment` at the very least.
 // Create event listeners
-filterbtn.on("click", runFilter());
+filterbutton.on("click", runFilter());
 filterform.on("submit", runFilter());
 
 // Filter function
 function runFilter() {
     
     // Prevent page from refreshing
-    d3.event.preventDefault();
-
-    // Var to select datetime html element in the filter form
-    var inputElement = d3.select("#datetime");
+    event.preventDefault();
 
     // var to get the value from datetime filter form
-    var inputDate = inputElement.property("value");
+    var inputDate = d3.select("#datetime").property("value");
 
-    var filteredData = tableData.filter(alien => al)
+    var filteredData = tableData.filter(alienReport => alienReport.datetime === inputDate);
 
+    console.log(filteredData);
 
+    // Clear table body
+    tbody.html("");
+
+    // Use createTable function to populate filtered table on webpage
+   filteredData.forEach((alienReport) => {
+    var row = tbody.append("tr");
+    Object.entries(alienReport).forEach(([key, value]) => {
+        var cell = row.append("td");
+        cell.text(value);
+        });
+    });
 };
 
 // * Use a date form in your HTML document and write JavaScript code that will listen for events and search through the `date/time` column to find rows that match user input.
-
-
-// Call init funciton for default look
-init();
