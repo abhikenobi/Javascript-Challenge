@@ -48,7 +48,8 @@ function runFilter() {
     console.log(filteredData);
 
     // Clear table body
-    table.html("");
+    var tablebody = d3.select("table>tbody");
+    tablebody.html("");
 
     // Use createTable function to populate filtered table on webpage
    filteredData.forEach((alienReport) => {
