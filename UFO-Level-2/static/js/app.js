@@ -31,33 +31,76 @@ function createTable() {
 };
 // * Make sure you have a column for `date/time`, `city`, `state`, `country`, `shape`, and `comment` at the very least.
 // Create event listeners
-filterbutton.on("click", runFilter());
-filterform.on("submit", runFilter());
+filterbutton.on("click", runFilter);
+filterform.on("submit", runFilter);
 
 // Filter function
 function runFilter() {
     
     // Prevent page from refreshing
-    event.preventDefault();
+    d3.event.preventDefault();
 
     // var to get the value from datetime filter form
     var inputDate = d3.select("#datetime").property("value");
+    var inputCity = d3.select("#city").property("value");
+    var inputState = d3.select("#state").property("value");
+    var inputCountry = d3.select("#country").property("value");
+    var inputShape = d3.select("#shape").property("value");
+    
 
-    var filteredData = tableData.filter(alienReport => alienReport.datetime === inputDate);
+    var filteredDate = tableData.filter(alienReport => alienReport.datetime === inputDate);
+    var filteredCity = tableData.filter(alienReport => alienReport.city === inputCity);
+    var filteredState = tableData.filter(alienReport => alienReport.state === inputState);
+    var filteredCountry = tableData.filter(alienReport => alienReport.country === inputCountry);
+    var filteredShape = tableData.filter(alienReport => alienReport.shape === inputShape);
 
     console.log(filteredData);
 
     // Clear table body
-    tbody.html("");
+    var tablebody = d3.select("table>tbody");
+    tablebody.html("");
 
     // Use createTable function to populate filtered table on webpage
-   filteredData.forEach((alienReport) => {
+   filteredDate.forEach((alienReport) => {
     var row = tbody.append("tr");
     Object.entries(alienReport).forEach(([key, value]) => {
         var cell = row.append("td");
         cell.text(value);
         });
     });
+
+    filteredCity.forEach((alienReport) => {
+        var row = tbody.append("tr");
+        Object.entries(alienReport).forEach(([key, value]) => {
+            var cell = row.append("td");
+            cell.text(value);
+            });
+        });
+        
+    
+    filteredState.forEach((alienReport) => {
+        var row = tbody.append("tr");
+        Object.entries(alienReport).forEach(([key, value]) => {
+            var cell = row.append("td");
+            cell.text(value);
+            });
+        });
+
+    filteredCountry.forEach((alienReport) => {
+        var row = tbody.append("tr");
+        Object.entries(alienReport).forEach(([key, value]) => {
+            var cell = row.append("td");
+            cell.text(value);
+            });
+        });
+
+    filteredShape.forEach((alienReport) => {
+        var row = tbody.append("tr");
+        Object.entries(alienReport).forEach(([key, value]) => {
+            var cell = row.append("td");
+            cell.text(value);
+            });
+        });
 };
 
 // * Use a date form in your HTML document and write JavaScript code that will listen for events and search through the `date/time` column to find rows that match user input.
