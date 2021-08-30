@@ -31,8 +31,8 @@ function createTable() {
 };
 // * Make sure you have a column for `date/time`, `city`, `state`, `country`, `shape`, and `comment` at the very least.
 // Create event listeners
-filterbutton.on("click", runFilter());
-filterform.on("submit", runFilter());
+filterbutton.on("click", runFilter);
+filterform.on("submit", runFilter);
 
 // Filter function
 function runFilter() {
