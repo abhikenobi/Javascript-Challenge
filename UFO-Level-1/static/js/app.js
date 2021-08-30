@@ -38,7 +38,7 @@ filterform.on("submit", runFilter());
 function runFilter() {
     
     // Prevent page from refreshing
-    event.preventDefault();
+    d3.event.preventDefault();
 
     // var to get the value from datetime filter form
     var inputDate = d3.select("#datetime").property("value");
@@ -48,7 +48,7 @@ function runFilter() {
     console.log(filteredData);
 
     // Clear table body
-    tbody.html("");
+    table.html("");
 
     // Use createTable function to populate filtered table on webpage
    filteredData.forEach((alienReport) => {
