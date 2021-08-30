@@ -6,7 +6,7 @@ var tableData = data;
 var table = d3.select("table");
 var tbody = table.select("tbody");
 var filterbutton = d3.select("#filter-btn");
-var filterform = d3.select('form');
+var filterform = d3.select('#form');
 
 // YOUR CODE HERE!
 
